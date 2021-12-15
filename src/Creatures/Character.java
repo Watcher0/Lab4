@@ -1,15 +1,33 @@
 package Creatures;
+import Exceptions.Unchecked;
 import Interfaces.*;
+import java.util.Scanner;
 
-public class Character extends Some implements Tell, Run, Disappointed, Excited, Happy, Time{
-    private String name;
+public class Character extends Some implements Tell, Run, Disappointed, Excited, Happy, Time {
+
+    public static void infinity() throws Unchecked{
+        Scanner cycle = new Scanner(System.in);
+        int rounds = cycle.nextInt();
+        while (rounds>0){
+            rounds--;
+            System.out.println("lol");
+        }
+    }
+
+    public static void anon() {
+        Character nothing = new Character("Ничто") {
+            void method() {
+            }
+        };
+    }
+    protected String name;
     public Character(String name) {
         super(name);
         this.name = name;
     }
     @Override
-    public boolean equals(Some create) {
-        if (this == create) return true;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
         return false;
     }
     @Override
@@ -33,12 +51,18 @@ public class Character extends Some implements Tell, Run, Disappointed, Excited,
         System.out.println(this.name + " сказал, что " + phrase + ".");
     }
     @Override
-    public void Run(String confirm) {
-        if (confirm.equals("да")) {
-            System.out.println(this.name + " побежал");
-        }
-        else{
-            System.out.println(this.name + " остался стоять");
+    public void Run(String confirm, int n) {
+        if (10 / n == 10) {
+            if (confirm.equals("да")) {
+                System.out.println(this.name + " побежал");
+            } else {
+                System.out.println(this.name + " остался стоять");
+            }
+            class FallDown {
+                void FallDown(String phrase) {
+                    System.out.print("Упаль :(");
+                }
+            }
         }
     }
     @Override
@@ -50,7 +74,7 @@ public class Character extends Some implements Tell, Run, Disappointed, Excited,
     }
     @Override
     public void Happy(String confirm) {
-        if (confirm == "да"){
+        if (confirm.equals("да")){
             System.out.println(this.name + " очень счастлив");
         }
         else {

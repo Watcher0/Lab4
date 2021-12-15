@@ -2,12 +2,13 @@ package Creatures;
 import Interfaces.*;
 
 public abstract class Some implements Do{
-    private String name;
+    protected String name;
     public Some(String name) {
         this.name = name;
     }
-    public boolean equals(Some create) {
-        if (this == create) return true;
+
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
         return false;
     }
     @Override
@@ -20,7 +21,12 @@ public abstract class Some implements Do{
     }
 
     @Override
-    public void Do(String work){
-        System.out.println(this.name + " " + work);
+    public void Do(String work, String enter) {
+        if (enter.equals("перенос")) {
+            System.out.print(this.name + " " + work + " \n");
+        }
+        else {
+            System.out.print(this.name + " " + work + " ");
+        }
     }
 }

@@ -2,7 +2,7 @@ package Creatures;
 
 import Interfaces.*;
 
-public class Thing extends Some implements AreThere, HowMuch, Do{
+public class Thing extends Some implements AreThere, HowMuch, Do, IsImportant{
     private String name;
     public Thing(String name) {
         super(name);
@@ -20,15 +20,15 @@ public class Thing extends Some implements AreThere, HowMuch, Do{
     @Override
     public void HowMuch(String HowMuch) {
         if (HowMuch.equals("много")){
-            System.out.println(", очень даже много");
+            System.out.println(" очень даже много");
         }
         else{
             System.out.println(", совсем мало");
         }
     }
     @Override
-    public boolean equals(Some create) {
-        return this == create;
+    public boolean equals(Object obj) {
+        return this == obj;
     }
     @Override
     public int hashCode() {
@@ -39,4 +39,8 @@ public class Thing extends Some implements AreThere, HowMuch, Do{
         return this.name;
     }
 
+    @Override
+    public boolean IsImportant(boolean confirm) {
+        return confirm;
+    }
 }
